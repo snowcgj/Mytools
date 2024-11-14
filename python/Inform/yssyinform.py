@@ -19,7 +19,7 @@ def read_last_activity():
     try:
         with open(file_path, "r", encoding="utf-8") as file:
             lines = file.read().splitlines()
-            print(f"文件内容: {lines}")  # 打印文件内容
+           #  print(f"文件内容: {lines}")  # 打印文件内容
             if len(lines) < 2:
                 print("文件内容不够两行")
                 return None, None
@@ -86,7 +86,7 @@ def detect(url):
         # 更新原来的文件
         write_last_activity(title, full_link)  
         #发送邮件
-        send_email("研究生院邮件通知",title, full_link)
+        send_email("研究生院邮件通知",title, full_link,who=1)
         # 写入日志文件
         logtest.mylog(text="研究生院")
     else:

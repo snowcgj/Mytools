@@ -68,17 +68,17 @@ def detect(url):
         send_email("学术邮件报错！","网页加载成功，DOM处理出错了！！！")
         return
     
-    print("原来的title")
-    print(f_title)
+    # print("原来的title")
+    # print(f_title)
 
-    print("现在的title")
-    print(title)
+    # print("现在的title")
+    # print(title)
 
     if title!=f_title and full_link!=f_link :
         # 更新原来的文件
         write_last_activity(title, full_link)  
         #发送邮件
-        send_email("学术活动通知",title, full_link)
+        send_email("学术活动通知",title, full_link,who=1)
         # 写入日志文件
         logtest.mylog()
     else:
