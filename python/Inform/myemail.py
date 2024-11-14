@@ -12,7 +12,7 @@ emails=[
     ["3216184305@qq.com","241812019@csu.edu.cn"]
     ]
 
-email_password = "sdfgrmatmtcojtdojdcgi"  #  发送者个人授权码
+email_password = "matmtcojtdojdcgi"  #  发送者个人授权码
 smtp_server = "smtp.qq.com"  # SMTP服务器地址（例如Gmail为smtp.gmail.com）
 smtp_port = 587  # 邮件服务器端口（Gmail使用587）  smtp_port = 465  # or 587 for TLS
 
@@ -49,7 +49,7 @@ def send_email(subject, body, link="",who=0):
         # for addr in emails[who]:
         #     print("ad是:")
         #     print(addr)
-        server.sendmail(sender_email, emails[who], message.as_string()) # 收件人可以直接是列表
+        # server.sendmail(sender_email, emails[who], message.as_string()) # 收件人可以直接是列表
         server.quit()
         print("邮件已发送！")
     except Exception as e:

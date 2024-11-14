@@ -41,6 +41,10 @@ def detect(url):
     global have_error
     # 读取上次检查时的网页内容
     f_title,f_link= read_last_activity()
+    print("原来的title:")
+    print(f_title)
+    print("原来的link:")
+    print(f_link)
     # 请求网页并获取内容
     response = requests.get(url)
     if response.status_code != 200:
@@ -50,26 +54,41 @@ def detect(url):
         print("学术邮件报错！","网页加载失败，出错了！！！")
         #  这里抱一个错 发到邮件里 
         return
+    
+    #设置编码
+    response.encoding=response.apparent_encoding
+    if not response.apparent_encoding:
+        response.encoding='utf-8'
+
     soup = BeautifulSoup(response.text, "html.parser")
     activities_section = soup.select("body > section > div.inside-main > ul")
     first_activity = activities_section[0].find("li")   #find方法，找到符合条件的第一个标签
     if first_activity:
         title = first_activity.find("a").get_text(strip=True)  # 提取标题
         href = first_activity.find("a")["href"]  # 提取链接
-        full_link = "https://gra.csu.edu.cn/" + href[2:]  # 拼接完整链接
+        full_link = "https://gra.csu.edu.cn/in" + href[2:]  # 拼接完整链接
     else:
         have_error=2
         # 报错返回
         send_email("研究生院邮件报错！","网页加载成功，DOM处理出错了！！！")
         print("学术邮件报错！","网页加载成功，DOM处理出错了！！！")
         return
-    if title!=f_title and full_link!=f_link :
+    # if title!=f_title and full_link!=f_link :
+    if  full_link!=f_link :
+
+        print("新的title是：")
+        print(title)
+
+        print("新的link是：")
+        print(full_link)
+
+        
         # 更新原来的文件
         write_last_activity(title, full_link)  
         #发送邮件
-        send_email("研究生院邮件通知","一些内容", full_link)
+        send_email("研究生院邮件通知",title, full_link)
         # 写入日志文件
-        logtest.mylog("研究生院")
+        logtest.mylog(text="研究生院")
     else:
         print("研究生院没有新的通知")
 

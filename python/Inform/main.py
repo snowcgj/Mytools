@@ -6,6 +6,7 @@ import logtest
 from myemail import send_email
 
 
+
 # 获取当前脚本所在的目录路
 current_file_path = os.path.realpath(__file__)
 # 获取当前 Python 文件所在的目录
@@ -19,8 +20,11 @@ file_path = os.path.join(current_directory, "last_activity.txt")
 def read_last_activity():
     if os.path.exists(file_path):
         with open(file_path, "r", encoding="utf-8") as file:
-            title, link = file.read().splitlines()  # 读取文件的两行
-            return title, link
+            lines = file.read().splitlines()  # 读取文件的两行
+            if len(lines) < 2:
+                print("文件内容不够两行")
+                return None, None
+            return lines[0], lines[1]
     else:
         return "", ""  # 如果文件不存在，返回空字符串
 
@@ -45,6 +49,12 @@ def detect(url):
         send_email("学术邮件报错！","网页加载失败，出错了！！！")
         #  这里抱一个错 发到邮件里 
         return
+    
+    #设置编码
+    response.encoding=response.apparent_encoding
+    if not response.apparent_encoding:
+        response.encoding='utf-8'
+
     soup = BeautifulSoup(response.text, "html.parser")
     activities_section = soup.select("body > div.container.mid_content > div.two-con > div.download > ul")
     first_activity = activities_section[0].find("li")   #find方法，找到符合条件的第一个标签
@@ -57,11 +67,18 @@ def detect(url):
         # 报错返回
         send_email("学术邮件报错！","网页加载成功，DOM处理出错了！！！")
         return
+    
+    print("原来的title")
+    print(f_title)
+
+    print("现在的title")
+    print(title)
+
     if title!=f_title and full_link!=f_link :
         # 更新原来的文件
         write_last_activity(title, full_link)  
         #发送邮件
-        send_email("学术活动通知","一些内容", full_link)
+        send_email("学术活动通知",title, full_link)
         # 写入日志文件
         logtest.mylog()
     else:

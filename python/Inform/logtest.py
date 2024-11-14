@@ -16,5 +16,7 @@ def mylog(text=""):
 
     with open(logfile,"+a",encoding="utf-8") as file:
         file.write(current_time )
+        file.write("   ")
+        file.write(text)
         file.write("   写入成功 \n")
 
