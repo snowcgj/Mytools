@@ -49,7 +49,7 @@ def send_email(subject, body, link="",who=0):
         # for addr in emails[who]:
         #     print("ad是:")
         #     print(addr)
-        # server.sendmail(sender_email, emails[who], message.as_string()) # 收件人可以直接是列表
+        server.sendmail(sender_email, emails[who], message.as_string()) # 收件人可以直接是列表
         server.quit()
         print("邮件已发送！")
     except Exception as e:

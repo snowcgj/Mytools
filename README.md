@@ -1,5 +1,6 @@
 # Mytools
 self-practice wheels for programming
+
 ## csu6h
 csu force us to watch 6-hour  boring video, this is a python script which my roommate code,and all I do is just to understand it and learn it, and review some knowledge about internet.
 ## mybase64
@@ -21,6 +22,7 @@ javascript代码中，有一些数字，应该是把一些字符串编码了，�
 不得不感慨，21年春就能够自动下载抖音的那个年代已经不存在了，反爬机制越来越严格呀。
 
 ## inform 
+2024 11 11
 学术活动更新时，老得点开网站检查，python自动检测，有变化，就自动发邮件（附上链接和内容）。
 beautifulsoup->F12开发者模式->selector 再利用beautiful的内容
 
@@ -29,3 +31,7 @@ beautifulsoup->F12开发者模式->selector 再利用beautiful的内容
 一个是发送邮件  可以有个列表来发送邮件
 一个是日志写入，报错信息也及时反馈到邮件
 一个是远程linux服务器，定时运行这个脚本
+## datediff
+计算两个日期差距多少天
+bash和python两种
+但是python由于datetime库考虑的情况较为完备，功能执行的更好
