@@ -1,1 +1,12 @@
-*.txt
+ 
+# 忽略.vscode下面的
+/.vscode/
+
+# 忽略idea的
+/.idea/
+# 下面的这行是个测试  可以这样用的
+/python/ss/a.txt
+
+
+
+
