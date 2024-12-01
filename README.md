@@ -35,3 +35,6 @@ beautifulsoup->F12开发者模式->selector 再利用beautiful的内容
 计算两个日期差距多少天
 bash和python两种
 但是python由于datetime库考虑的情况较为完备，功能执行的更好
+
+## pic2char
+图片转字符串图片， 刚弄，问题有点大， 核心就是一个视觉上的效果问题
