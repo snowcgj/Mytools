@@ -1,3 +1,9 @@
+'''
+@time: 2024 12 1 晚上最简单版本 效果很差
+@author: battab
+@vision: 0.1
+'''
+
 from PIL import Image
 import numpy as np
 import os
