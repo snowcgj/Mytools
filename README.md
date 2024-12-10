@@ -1,6 +1,6 @@
 # Mytools
-self-practice wheels for programming
-
+self-practice  for programming
+# python   
 ## csu6h
 csu force us to watch 6-hour  boring video, this is a python script which my roommate code,and all I do is just to understand it and learn it, and review some knowledge about internet.
 ## mybase64
@@ -46,3 +46,19 @@ bash和python两种
 ## 2FA_TOTP
 github强制2FA登录，就了解下背后的计算算法， 感觉还是很适合登陆的。 就是应用广告有点多， 后续也可以再考虑点这个。
 2024 12 5 ， 最简单的版本，简单学习下， 最简单样例
+
+#js      
+## diff
+diff的算法，就是DOM树，热更新，<li>指代key的结果， 
+只是在简单认识下node js这些基本知识， 和diff算法  ，这个代码更像一个伪代码，还没运行成功
+```bash
+node js/diff/index.js
+file:///E:/Coding/mytools/Mytools/js/diff/utill.js:74
+    const maxLen = Math.max(oldChildren.length(), newChildren.length());
+    const maxLen = Math.max(oldChildren.length(), newChildren.length());
+                                        ^
+
+TypeError: oldChildren.length is not a function
+    at diffChildren (file:///E:/Coding/mytools/Mytools/js/diff/utill.js:74:41)
+    at diff (file:///E:/Coding/mytools/Mytools/js/diff/utill.js:25:31) 
+    ```

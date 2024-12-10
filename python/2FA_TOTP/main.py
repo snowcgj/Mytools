@@ -3,7 +3,15 @@ import qrcode
 import time
 import random
 import string
+import os
 
+current_file_path=os.path.realpath(__file__)
+print(current_file_path)
+current_directory = os.path.dirname(current_file_path)
+print(current_directory)
+
+
+current_directory = os.path.dirname(current_file_path)
 # 1. 生成 TOTP 密钥 TOTP 算法所要求的 Base32 编码格式 也可以生成，但是需要满足base32要求
 def generate_totp_secret():
     secret = pyotp.random_base32()  # 生成随机密钥
@@ -14,7 +22,8 @@ def generate_qr_code(secret, user_email):
     totp = pyotp.TOTP(secret)
     uri = totp.provisioning_uri(user_email, issuer_name="MyApp")
     img = qrcode.make(uri)
-    img.save(f"./{user_email}_qrcode.png")  # 保存二维码图像
+    filename=current_directory+"\\"+user_email+"_qrcode.png"
+    img.save(filename)  # 保存二维码图像
     print(f"二维码已生成：{user_email}_qrcode.png")
     
 # 3. 验证用户输入的验证码
