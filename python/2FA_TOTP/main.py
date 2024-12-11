@@ -15,6 +15,8 @@ current_directory = os.path.dirname(current_file_path)
 # 1. 生成 TOTP 密钥 TOTP 算法所要求的 Base32 编码格式 也可以生成，但是需要满足base32要求
 def generate_totp_secret():
     secret = pyotp.random_base32()  # 生成随机密钥
+    print("密钥是：")
+    print(secret)
     return secret
 
 # 2. 生成二维码供用户扫描
@@ -47,7 +49,7 @@ def generate_recovery_codes(num_codes=5):
 # 5. 演示代码：使用 TOTP 和恢复代码进行验证
 def demo_2fa():
     # 假设用户的邮箱
-    user_email = "user@example.com"
+    user_email = "user@sdu.com"
     
     # 第一步：生成 TOTP 密钥并生成二维码
     secret = generate_totp_secret()
